@@ -33,5 +33,29 @@ public class ApiClientTest {
         assertThat(apiClient.getUsername(), is(USERNAME));
         assertThat(apiClient.getPassword(), is(PASSWORD));
         assertThat(apiClient.getConfiguration(), is(nullValue()));
+        assertThat(apiClient.getUseHttps(), is(true));
+    }
+
+    @Test
+    public void testApiClientDefaultArgumentValue() {
+        final ApiClient apiClient = ApiClient.builder()
+                .url(URL)
+                .username(USERNAME)
+                .password(PASSWORD)
+                .build();
+
+        assertThat(apiClient.getUseHttps(), is(true));
+    }
+
+    @Test
+    public void testApiClientDefaultBuilderArgumentSpecified() {
+        final ApiClient apiClient = ApiClient.builder()
+                .url(URL)
+                .username(USERNAME)
+                .password(PASSWORD)
+                .useHttps(false)
+                .build();
+
+        assertThat(apiClient.getUseHttps(), is(false));
     }
 }

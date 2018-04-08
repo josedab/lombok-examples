@@ -15,6 +15,7 @@ public class ApiClient {
     private final String username;
     @NonNull
     private final String password;
-    private boolean useHttps;
+    @Builder.Default
+    private Boolean useHttps = true;
     private Map<String, String> configuration;
 }
